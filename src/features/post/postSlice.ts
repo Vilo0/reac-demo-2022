@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
+const endpoint = process.env.REACT_APP_API_URI
+
 interface PostsService {
   entities: any
   loading: 'idle' | 'pending' | 'succeeded' | 'failed',
@@ -24,7 +26,7 @@ export const getPosts = createAsyncThunk(
   'posts/getPosts',
   // callback function
   async (thunkAPI) => {
-    const res = await fetch('http://localhost:8000/posts').then(
+    const res = await fetch(`${endpoint}/posts`).then(
     (data) => data.json()
   )
   return res
@@ -35,7 +37,7 @@ export const createPost = createAsyncThunk(
   async (post: Post, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        'http://localhost:8000/posts',
+        `${endpoint}/posts`,
         {
           method: 'POST',
           body: JSON.stringify(post),
@@ -58,7 +60,7 @@ export const deletePost = createAsyncThunk(
   async (id: string, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/posts/${id}`,
+        `${endpoint}/posts/${id}`,
         {
           method: 'DELETE',
           headers: {
