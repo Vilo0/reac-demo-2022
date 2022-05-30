@@ -7,6 +7,11 @@ interface PostsService {
   deleted: boolean;
 }
 
+interface Post {
+  name: string;
+  description: string;
+}
+
 const initialState = {
   entities: [],
   loading: 'idle',
@@ -27,7 +32,7 @@ export const getPosts = createAsyncThunk(
 
 export const createPost = createAsyncThunk(
   'posts/addPost',
-  async (post: any, { rejectWithValue }) => {
+  async (post: Post, { rejectWithValue }) => {
     try {
       const response = await fetch(
         'http://localhost:8000/posts',
