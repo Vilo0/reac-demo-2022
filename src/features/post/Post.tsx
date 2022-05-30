@@ -34,7 +34,7 @@ const Post = () => {
 
   return (
     <div>
-      <h3>Posts</h3>
+      <h3>Posts - extraReducer - Redux Toolkit</h3>
       <ul>
         { (entities as any)?.data && (entities as any).data.map((data: any) => (
           <div key={data._id}>
@@ -61,6 +61,8 @@ const Post = () => {
             <input type="submit" value="Agregar" />
           </form>
       </div>
+
+      <hr />
     </div>
   );
 };

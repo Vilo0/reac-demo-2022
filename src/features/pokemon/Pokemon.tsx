@@ -11,7 +11,7 @@ const Pokemon = () => {
 
   return (
     <div>
-      <h2>Pokemon</h2>
+      <h1>Pokemon - query - Redux Toolkit</h1>
       { data && (
         <>
           <h3>{ data.name }</h3>

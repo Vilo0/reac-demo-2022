@@ -9,10 +9,12 @@ const Counter = () => {
 
   return (
     <div>
-      <h1>Counter</h1>
+      <h1>Counter - reducers - Redux Toolkit</h1>
       <button onClick={ () => dispatch(increment()) }>+1</button>
       <span>{ count }</span>
       <button onClick={ () => dispatch(decrement()) }>-1</button>
+
+      <hr />
     </div>
   )
 };
