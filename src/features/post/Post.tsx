@@ -34,7 +34,7 @@ const Post = () => {
 
   return (
     <div>
-      <h3>Posts - extraReducer - Redux Toolkit</h3>
+      <h1>Posts - extraReducer - Redux Toolkit</h1>
       <ul>
         { (entities as any)?.data && (entities as any).data.map((data: any) => (
           <div key={data._id}>
