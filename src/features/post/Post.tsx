@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getPosts, createPost, deletePost } from './postSlice';
 
 const Post = () => {
   const dispatch = useAppDispatch()
-  const { entities, deleted, post } = useAppSelector((state) => state.post);
+  const { posts: entities, post } = useAppSelector((state) => state.post);
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch, post, deleted]);
+  }, [dispatch, post]);
 
   const handlePost = (event: any) => {
     event.preventDefault();

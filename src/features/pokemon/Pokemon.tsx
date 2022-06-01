@@ -1,4 +1,4 @@
-import { useGetPokemonByNameQuery } from "../../app/rtq-pokemon";
+import { useGetPokemonByNameQuery } from '../../rt-query/pokemons';
 import { useEffect } from 'react';
 
 const Pokemon = () => {
