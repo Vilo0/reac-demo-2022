@@ -4,6 +4,7 @@ import { IPostState } from './models';
 import { fetchAllPostsThunk, putPostThunk, postPostThunk } from './thunks';
 import { RootState } from '../../store';
 import { TFetchStatus, TFetchAction } from '../models';
+import { deletePostThunk } from './thunks/index';
 
 export const emptyPost: IPost = {
   _id: '',
@@ -22,7 +23,7 @@ const initialState: IPostState = {
 };
 
 export const postsSlice = createSlice({
-  name: 'posts',
+  name: 'postsv2',
   initialState,
   reducers: {
     clearPosts: (state: IPostState) => {
@@ -71,34 +72,34 @@ export const postsSlice = createSlice({
       });
     /* Put post */
     builder
-      .addCase(postPostThunk.pending, (state) => {
+      .addCase(putPostThunk.pending, (state) => {
         state.action = 'putOne';
         state.status = 'loading';
       })
-      .addCase(postPostThunk.fulfilled, (state, action) => {
+      .addCase(putPostThunk.fulfilled, (state, action) => {
         state.action = 'putOne';
         state.status = 'success';
         state.posts = action.payload.data ? action.payload.data : {};
         // toastSuccessMessage(action.payload.message as string);
       })
-      .addCase(postPostThunk.rejected, (state, action) => {
+      .addCase(putPostThunk.rejected, (state, action) => {
         state.status = 'failed';
         state.action = 'putOne';
         // toastErrorMessage(action.payload as string);
       });
     /* Delete post */
     builder
-      .addCase(putPostThunk.pending, (state) => {
+      .addCase(deletePostThunk.pending, (state) => {
         state.action = 'deleteOne';
         state.status = 'loading';
       })
-      .addCase(putPostThunk.fulfilled, (state, action) => {
+      .addCase(deletePostThunk.fulfilled, (state, action) => {
         state.action = 'putOne';
         state.status = 'success';
         state.posts = action.payload.data ? action.payload.data : [];
         // toastSuccessMessage(action.payload.message as string);
       })
-      .addCase(putPostThunk.rejected, (state, action) => {
+      .addCase(deletePostThunk.rejected, (state, action) => {
         state.action = 'putOne';
         state.status = 'failed';
         // toastErrorMessage(action.payload as string);

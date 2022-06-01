@@ -6,7 +6,7 @@ import { IPostPost } from '../../../models/IPost';
 
 
 export const fetchAllPostsThunk = createAsyncThunk(
-  'deviceTypes/fetch',
+  'postsv2/fetch',
   async (token: string, { rejectWithValue }) => {
     try {
       const data: IFetchedPostsReponse = await fetchAllPosts();
@@ -22,7 +22,7 @@ export const fetchAllPostsThunk = createAsyncThunk(
 );
 
 export const postPostThunk = createAsyncThunk(
-  'posts/post',
+  'postsv2/post',
   async ({ post }: { post: IPostPost }, { rejectWithValue }) => {
     try {
       const data: any = await createPost(post);
@@ -38,7 +38,7 @@ export const postPostThunk = createAsyncThunk(
 );
 
 export const putPostThunk = createAsyncThunk(
-  'posts/put',
+  'postsv2/put',
   async ({ id, post }: { id: string, post: IPostPost }, { rejectWithValue }) => {
     try {
       const data: any = await updatePost(id, post);
@@ -54,7 +54,7 @@ export const putPostThunk = createAsyncThunk(
 );
 
 export const deletePostThunk = createAsyncThunk(
-  'posts/delete',
+  'postsv2/delete',
   async ({ id }: { id: string }, { rejectWithValue }) => {
     try {
       const data: any = await deletePost(id);
