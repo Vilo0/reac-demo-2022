@@ -3,13 +3,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 import counterSlice from '../features/counter/counterSlice';
-import postSlice from '../features/post/postSlice';
-import { pokemonApi } from './rtq-pokemon';
+import PostReducer from '../redux/posts';
+import { pokemonApi } from '../rt-query/pokemons';
 
 export const store = configureStore({
   reducer: {
     counter: counterSlice,
-    post: postSlice,
+    post: PostReducer,
     // Add the generated reducer as a specific top-level slice
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
